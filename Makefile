@@ -8,7 +8,7 @@ CFLAGS := -Wall -Wextra -std=c17 -I$(INC_DIR)
 LDFLAGS := -lcriterion -lcurl
 
 # Tous les fichiers source
-ALL_SRC := $(wildcard $(SRC_DIR)/*.c)
+ALL_SRC := $(wildcard $(SRC_DIR)/**/*.c) $(wildcard $(SRC_DIR)/*.c)
 
 # Fichiers sans main.c (pour tests)
 SRC := $(filter-out $(SRC_DIR)/main.c, $(ALL_SRC))
@@ -38,7 +38,7 @@ $(BIN): $(FULL_OBJ)
 
 # Compilation des .o
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(BUILD_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Compilation et exécution des tests

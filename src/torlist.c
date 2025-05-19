@@ -18,9 +18,10 @@ void download_tor_list() {
         return;
     }
 
-    configure_curl(curl, fp, TOR_EXIT_LIST_URL);
+    configure_curl_file(curl, fp, TOR_EXIT_LIST_URL);
     fetch_requests(curl);
 
     fclose(fp);
+
     curl_easy_cleanup(curl);
 }
