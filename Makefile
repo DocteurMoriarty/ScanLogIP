@@ -32,7 +32,6 @@ all: $(BIN)
 
 # Compilation du programme principal (avec main.c)
 $(BIN): $(FULL_OBJ)
-	clear
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
@@ -44,7 +43,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 # Compilation et exécution des tests
 .PHONY: test
 test: $(TEST_BIN)
-	clear
 	@echo "Lancement des tests Criterion..."
 	@./$(TEST_BIN)
 
@@ -56,7 +54,6 @@ $(TEST_BIN): $(TEST_SRC) $(SRC)
 # Nettoyage
 .PHONY: clean
 clean:
-	clear
 	rm -rf $(BUILD_DIR)
 
 # Exécution du programme
